@@ -5,8 +5,6 @@ import * as z from 'zod'
 import { Button, FormControl, FormErrorMessage, FormLabel, Input, Select, Stack, Switch } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import 'react-datepicker/dist/react-datepicker.css'
-
 const contactFormSchema = z.object({
   name: z.string().nonempty(),
   email: z.string().email().nonempty(),
@@ -52,12 +50,6 @@ export const ContactForm: FC = () => {
             <option value='security'>Security</option>
           </Select>
           <FormErrorMessage>{errors.topic?.message}</FormErrorMessage>
-        </FormControl>
-
-        <FormControl isInvalid={Boolean(errors.date)}>
-          <FormLabel htmlFor='date'>Date &amp; time</FormLabel>
-          <Input type='datetime-local' {...register('date')} />
-          <FormErrorMessage>{errors.date?.message}</FormErrorMessage>
         </FormControl>
 
         <FormControl isInvalid={Boolean(errors.owner)}>
