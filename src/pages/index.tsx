@@ -5,9 +5,17 @@ import { Box, Stack } from '@chakra-ui/react'
 import { AppHeader } from '../components/app-header'
 import { Catalog } from '../features/catalog'
 import { ContactForm } from '../features/contact-form'
-import { ImageDisplay } from '../features/image-display'
+import { ImageDisplay } from '../features/image-display';
 
-const Home: NextPage = () => {
+interface IHome {
+    query: {
+        theme?: string
+    };
+}
+
+const Home: NextPage<IHome> = ({query}) => {
+  console.log('%c query ', 'background: #029640; color: #fff',query)
+
   return (
     <Stack spacing={0} height='100%'>
       <AppHeader />
@@ -15,6 +23,7 @@ const Home: NextPage = () => {
         <Box width='50%' overflow='auto'>
           <Box padding={8}>
             <ContactForm />
+              {query.theme}
           </Box>
           <ImageDisplay />
         </Box>
@@ -24,6 +33,12 @@ const Home: NextPage = () => {
       </Box>
     </Stack>
   )
+}
+
+Home.getInitialProps = async ({query}) => {
+    return {
+        query
+    }
 }
 
 export default Home
