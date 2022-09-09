@@ -19,7 +19,7 @@ export const ThemeSelector: FC<{ onSelect: (e: any) => void }> = ({
         <Select onChange={onSelect} defaultValue="vw">
           <option value="vw">VW</option>
           <option value="audi">Audi</option>
-          <option value="scoda">Scoda</option>
+          <option value="skoda">Skoda</option>
           <option value="cariad">Cariad</option>
         </Select>
       </Container>
